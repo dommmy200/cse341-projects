@@ -1,15 +1,23 @@
 const express = require('express');
-const dotenv = require('dotenv');
-
 const app = express();
 
+const dotenv = require('dotenv');
 dotenv.config();
-const port = process.env.PORT;
 
-app.get('/', (req, res) => {
-    res.send('Welcome to base URL');
-});
+const router = require('./routes');
+const mongodb = require('./routes/data/database');
 
-app.listen(port, () => {
-    console.log(`Server is listening on Port: ${port}`);
+
+const port = process.env.PORT || 5500;
+
+app.use('/', router);
+
+mongodb.initDatabase((err) => {
+    if (err) {
+        console.log(err);
+    } else {
+        app.listen(port, () => {
+            console.log(`Database: listing; Server: running on Port: ${port}`);
+        });
+    }
 });
