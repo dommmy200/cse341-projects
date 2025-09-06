@@ -1,0 +1,8 @@
+{
+  // Always format on save
+  "editor.formatOnSave": true,
+
+  // Spaces inside object literal braces
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
+}
